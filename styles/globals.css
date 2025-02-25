@@ -24,11 +24,11 @@ body {
 }
 
 .slick-dots {
-  @apply !flex justify-start w-full;
+  @apply !flex justify-start w-full gap-1;
 }
 
 .slick-dots .slick-active div {
-  @apply bg-primary;
+  @apply bg-primary w-6 h-6 border rounded-full mt-0 relative -top-1.5  -left-1;
 }
 
 .slick-dots div {
