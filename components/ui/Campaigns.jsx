@@ -4,8 +4,8 @@ import { FaShoppingCart } from "react-icons/fa";
 
 const CampaignsItem = () => {
   return (
-    <div className="bg-secondary flex items-center flex-row basis-[40%] rounded-md px-5 py-5 gap-4">
-      <div className="relative sm:w-44 sm:h-44  w-36 h-36 border-4  border-primary rounded-full  overflow-hidden">
+    <div className="bg-secondary flex flex-col sm:flex-row items-center basis-[40%] rounded-xl px-5 py-5 gap-4">
+      <div className="relative  w-44 h-44 border-4  border-primary rounded-full  overflow-hidden">
         <Image
           className="rounded-full transform  hover:scale-125 transition-all text-2xl"
           src="/images/01.jpg"
@@ -29,7 +29,7 @@ const CampaignsItem = () => {
 };
 function Campaigns() {
   return (
-    <div className="container  justify-center flex mx-auto py-20 gap-5  ">
+    <div className="container  justify-center flex flex-col sm:flex-row mx-auto p-10 gap-5  ">
       <CampaignsItem />
       <CampaignsItem />
     </div>
