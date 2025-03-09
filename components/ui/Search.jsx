@@ -30,48 +30,28 @@ const Search = ({ setIsSearchModal }) => {
           <ul className="mt-4 text-black">
             <li className=" mt-2 flex items-center justify-between  hover:text-white hover:bg-primary transition-all">
               <div>
-                <img
-                  src="https://html.design/demo/feane/images/f2.png"
-                  alt=""
-                  width={58}
-                  height={58}
-                />
+                <img src="/images/f2.jpg" alt="" width={58} height={58} />
               </div>
               <span className="font-bold">Good Pizza</span>
               <span className="font-bold">$10</span>
             </li>
             <li className=" mt-2 flex items-center justify-between  hover:text-white hover:bg-primary transition-all">
               <div>
-                <img
-                  src="https://html.design/demo/feane/images/f2.png"
-                  alt=""
-                  width={58}
-                  height={58}
-                />
+                <img src="/images/f2.jpg" alt="" width={58} height={58} />
               </div>
               <span className="font-bold">Good Pizza</span>
               <span className="font-bold">$10</span>
             </li>
             <li className="mt-2  flex items-center justify-between  hover:text-white hover:bg-primary transition-all">
               <div>
-                <img
-                  src="https://html.design/demo/feane/images/f2.png"
-                  alt=""
-                  width={58}
-                  height={58}
-                />
+                <img src="/images/f2.jpg" alt="" width={58} height={58} />
               </div>
               <span className="font-bold">Good Pizza</span>
               <span className="font-bold">$10</span>
             </li>
             <li className=" mt-2 flex items-center justify-between  hover:text-white hover:bg-primary transition-all">
               <div>
-                <img
-                  src="https://html.design/demo/feane/images/f2.png"
-                  alt=""
-                  width={58}
-                  height={58}
-                />
+                <img src="/images/f2.jpg" alt="" width={58} height={58} />
               </div>
               <span className="font-bold">Good Pizza</span>
               <span className="font-bold">$10</span>
