@@ -1,38 +1,61 @@
+"use client";
 import React from "react";
 import Title from "./Title";
 import Input from "../form/Input";
+import { useFormik } from "formik";
 
-const Reservation = () => {
+function Reservation() {
+  const onSubmit = async (values, actions) => {
+    await new Promise((resolve) => setTimeout(resolve, 4000));
+    actions.resetForm();
+  };
+
+  const { values, handleSubmit, handleChange } = useFormik({
+    initialValues: {
+      fullName: "",
+      phoneNumber: "",
+      email: "",
+      persons: "",
+      date: "",
+    },
+    onSubmit,
+  });
+  // console.log(values);
   const inputs = [
     {
       id: 1,
       name: "fullName",
       type: "text",
       placeholder: "Your Full Name",
+      value: values.fullName,
     },
     {
       id: 2,
       name: "phoneNumber",
       type: "number",
       placeholder: "Your Fone  Number",
+      value: values.phoneNumber,
     },
     {
       id: 3,
       name: "email",
       type: "email",
       placeholder: "Your email Adress",
+      value: values.email,
     },
     {
       id: 4,
       name: "persons",
       type: "number",
       placeholder: "How many Persons",
+      value: values.persons,
     },
     {
       id: 5,
       name: "date",
       type: "datetime-local",
       placeholder: "How many Persons",
+      value: values.date,
     },
   ];
   return (
@@ -41,13 +64,15 @@ const Reservation = () => {
         Book A Table
       </Title>
       <div className="flex justify-between  flex-wrap gap-10">
-        <form className="w-full lg:flex-1 px-5">
+        <form className="w-full lg:flex-1 px-5" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-5">
             {inputs.map((input) => (
-              <Input key={input.id} input={input} />
+              <Input key={input.id} {...input} onChange={handleChange} />
             ))}
           </div>
-          <button className="btn-primary mt-4">BOOK NOW</button>
+          <button className="btn-primary mt-4" type="submit">
+            BOOK NOW
+          </button>
         </form>
         <div className="lg:flex-1 flex-1 px-5">
           <iframe
@@ -64,6 +89,6 @@ const Reservation = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Reservation;

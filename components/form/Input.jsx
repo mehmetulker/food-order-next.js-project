@@ -1,7 +1,8 @@
 import React from "react";
 
-function Input({ input }) {
-  const { placeholder, type } = input;
+function Input(props) {
+  const { type, errorMessage, touched, placeholder, ...inputProps } = props;
+  console.log(props);
   return (
     <div className="w-full">
       <label className="relative block cursor-text w-full">
@@ -11,6 +12,7 @@ function Input({ input }) {
             type !== "datetime-local" && "pt - 2"
           }`}
           required
+          {...inputProps}
         />
         {type !== "datetime-local" && (
           <span className="absolute  top-0 left-0 px-4 text-sm flex items-center h-full peer-focus:h-7 peer-focus:text-xs  peer-valid:text-xs transition-all">
