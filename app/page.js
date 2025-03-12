@@ -4,6 +4,7 @@ import Menu from "@/components/product/Menu";
 import About from "@/components/about/About";
 import Item from "@/components/product/Item";
 import Reservation from "@/components/ui/Reservation";
+import Customers from "@/components/customers/Customers";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <About />
       <Item />
       <Reservation />
+      <Customers />
     </div>
   );
 }

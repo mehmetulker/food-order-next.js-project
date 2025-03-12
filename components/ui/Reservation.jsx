@@ -3,6 +3,7 @@ import React from "react";
 import Title from "./Title";
 import Input from "../form/Input";
 import { useFormik } from "formik";
+import { reservationSchema } from "@/schemas/reservation";
 
 function Reservation() {
   const onSubmit = async (values, actions) => {
@@ -10,17 +11,19 @@ function Reservation() {
     actions.resetForm();
   };
 
-  const { values, handleSubmit, handleChange } = useFormik({
-    initialValues: {
-      fullName: "",
-      phoneNumber: "",
-      email: "",
-      persons: "",
-      date: "",
-    },
-    onSubmit,
-  });
-  // console.log(values);
+  const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
+    useFormik({
+      initialValues: {
+        fullName: "",
+        phoneNumber: "",
+        email: "",
+        persons: "",
+        date: "",
+      },
+      onSubmit,
+      validationSchema: reservationSchema,
+    });
+
   const inputs = [
     {
       id: 1,
@@ -28,34 +31,43 @@ function Reservation() {
       type: "text",
       placeholder: "Your Full Name",
       value: values.fullName,
+      errorMessage: errors.fullName,
+      touched: touched.fullName,
     },
     {
       id: 2,
       name: "phoneNumber",
       type: "number",
-      placeholder: "Your Fone  Number",
+      placeholder: "Your Phone Number",
       value: values.phoneNumber,
+      errorMessage: errors.phoneNumber,
+      touched: touched.phoneNumber,
     },
     {
       id: 3,
       name: "email",
       type: "email",
-      placeholder: "Your email Adress",
+      placeholder: "Your Email Address",
       value: values.email,
+      errorMessage: errors.email,
+      touched: touched.email,
     },
     {
       id: 4,
       name: "persons",
       type: "number",
-      placeholder: "How many Persons",
+      placeholder: "How Many Persons?",
       value: values.persons,
+      errorMessage: errors.persons,
+      touched: touched.persons,
     },
     {
       id: 5,
       name: "date",
       type: "datetime-local",
-      placeholder: "How many Persons",
       value: values.date,
+      errorMessage: errors.date,
+      touched: touched.date,
     },
   ];
   return (
@@ -67,7 +79,12 @@ function Reservation() {
         <form className="w-full lg:flex-1 px-5" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-5">
             {inputs.map((input) => (
-              <Input key={input.id} {...input} onChange={handleChange} />
+              <Input
+                key={input.id}
+                {...input}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
             ))}
           </div>
           <button className="btn-primary mt-4" type="submit">
