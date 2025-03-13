@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 function About() {
   return (
-    <div className="flex bg-secondary py-14 mt-16 mb-16">
+    <div className="flex bg-secondary py-14 ">
       <div className="container mx-auto flex h-full  items-center justify-center w-1/2 sm:w-4/6 flex-wrap md:flex-nowrap">
         <div className="flex justify-center flex-1">
           <div className="relative w-[350px]  h-[375px] sm:w-[450px] sm:h-[610px]">

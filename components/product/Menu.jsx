@@ -3,7 +3,7 @@ import MenuItem from "./MenuItem";
 
 function Menu() {
   return (
-    <div className="container mx-auto ">
+    <div className="container mx-auto mt-16 mb-16">
       <div className="flex flex-col items-center mb-16">
         <Title addClass="text-4xl">Our Menu</Title>
         <div className="mt-10 gap-3">

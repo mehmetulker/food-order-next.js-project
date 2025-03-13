@@ -1,5 +1,6 @@
 "use client";
 import Logo from "../ui/Logo";
+import Link from "next/link";
 
 import { FaUserAlt } from "react-icons/fa";
 import { HiShoppingCart } from "react-icons/hi";
@@ -20,16 +21,16 @@ const Header = () => {
         <nav className="hidden sm:block">
           <ul className="flex justify-center items-center space-x-4">
             <li className="px-[5px] py-[10px] uppercase hover:text-primary gap-x-2 cursor-pointer">
-              <a href="http://">Home</a>
+              <Link href="http:/">Home</Link>
             </li>
             <li className="px-[5px] py-[10px] uppercase hover:text-primary gap-x-2 cursor-pointer">
-              <a href="http://">Menu</a>
+              <Link href="http:/menu">Menu</Link>
             </li>
             <li className="px-[5px] py-[10px] uppercase hover:text-primary gap-x-2 cursor-pointer">
-              <a href="http://">About</a>
+              <Link href="http:/about">About</Link>
             </li>
             <li className="px-[5px] py-[10px] uppercase hover:text-primary gap-x-2 cursor-pointer">
-              <a href="http://">Book Table</a>
+              <Link href="http:/reservation">Book Table</Link>
             </li>
           </ul>
         </nav>
