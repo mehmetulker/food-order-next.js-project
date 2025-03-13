@@ -36,9 +36,9 @@ const Header = () => {
         </nav>
         <div className="mx-2 ">
           <div className="flex items-center gap-x-4">
-            <a href="" className="hover:text-primary transition-all">
+            <Link href="/auth" className="hover:text-primary transition-all">
               <FaUserAlt />
-            </a>
+            </Link>
             <a href="" className="hover:text-primary transition-all">
               <HiShoppingCart />
             </a>
