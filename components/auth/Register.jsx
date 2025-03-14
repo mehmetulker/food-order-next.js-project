@@ -86,23 +86,13 @@ const Register = () => {
         </form>
         <div className="flex flex-col gap-4 w-full mt-6 px-3 ">
           <button onClick={handleSubmit} className="btn-primary " type="submit">
-            LOGIN
-          </button>
-          <button
-            onClick={handleSubmit}
-            className="btn-secondary  flex items-center justify-center gap-1"
-            type="submit"
-          >
-            <span className="text-2xl">
-              <FaGithub />
-            </span>
-            GITHUB
+            REGISTER
           </button>
           <Link
-            href="/auth/register"
+            href="/auth/login"
             className="text-start underline text-sm  text-secondary"
           >
-            <span>Do you no have a account ?</span>
+            <span>Do you have a account ?</span>
           </Link>
         </div>
       </div>
