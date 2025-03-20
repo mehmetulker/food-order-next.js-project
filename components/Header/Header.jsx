@@ -39,9 +39,9 @@ const Header = () => {
             <Link href="/auth" className="hover:text-primary transition-all">
               <FaUserAlt />
             </Link>
-            <a href="" className="hover:text-primary transition-all">
+            <Link href="/cart" className="hover:text-primary transition-all">
               <HiShoppingCart />
-            </a>
+            </Link>
             <button
               onClick={() => setIsSearchModal(!isSearchModal)}
               className="hover:text-primary transition-all"

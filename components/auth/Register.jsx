@@ -1,10 +1,9 @@
 "use client";
 import { useFormik } from "formik";
-import { loginSchema } from "@/schemas/login";
+import { registerSchema } from "@/schemas/register";
 import Link from "next/link";
 import Input from "@/components/form/Input";
 import Title from "@/components/ui/Title";
-import { FaGithub } from "react-icons/fa";
 
 const Register = () => {
   const onSubmit = async (values, actions) => {
@@ -18,10 +17,10 @@ const Register = () => {
         fullName: "",
         email: "",
         password: "",
-        confirimPassword: "",
+        confirmPassword: "",
       },
       onSubmit,
-      validationSchema: loginSchema,
+      validationSchema: registerSchema,
     });
 
   const inputs = [
@@ -57,12 +56,12 @@ const Register = () => {
 
     {
       id: 4,
-      name: "confirimPassword",
+      name: "confirmPassword",
       type: "password",
-      placeholder: "Your Confirim Password ",
-      value: values.confirimPassword,
-      errorMessage: errors.confirimPassword,
-      touched: touched.confirimPassword,
+      placeholder: "Your Password Again",
+      value: values.confirmPassword,
+      errorMessage: errors.confirmPassword,
+      touched: touched.confirmPassword,
     },
   ];
   return (
