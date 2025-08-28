@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Title from "../../components/ui/Title";
+import { useState } from "react";
 
 function Item() {
   return (
@@ -31,19 +33,19 @@ function Item() {
           <div>
             <h1 className="text-xl font-bold mb-3">Choose the Size</h1>
             <div className="flex gap-6 items-center ">
-              <div className="relative w-10  h-10 ">
+              <div className="relative w-10  h-10  cursor-pointer">
                 <Image src="/images/size.png" layout="fill" alt="" />
                 <span className="absolute top-0 -right-4 text-xs bg-primary rounded-full px[5px] font-medium">
                   Small
                 </span>
               </div>
-              <div className="relative w-12  h-12 ">
+              <div className="relative w-12  h-12 cursor-pointer ">
                 <Image src="/images/size.png" layout="fill" alt="" />
                 <span className="absolute top-0 -right-6 text-xs bg-primary rounded-full px[5px] font-medium">
                   Medium
                 </span>
               </div>
-              <div className="relative w-16  h-16 ">
+              <div className="relative w-16  h-16 cursor-pointer ">
                 <Image src="/images/size.png" layout="fill" alt="" />
                 <span className="absolute top-0 -right-4 text-xs bg-primary rounded-full px[5px] font-medium">
                   Large
@@ -56,15 +58,7 @@ function Item() {
             <div className="flex gap-6 items-center ">
               <label className="flex items-center gap-1">
                 <input type="checkbox" className=" w-4 h-4 accent-primary" />{" "}
-                <span className="text-sm font-semibold">Ketchup</span>
-              </label>
-              <label className="flex items-center gap-1">
-                <input type="checkbox" className=" w-4 h-4 accent-primary" />{" "}
-                <span className="text-sm font-semibold">Moynes</span>
-              </label>
-              <label className="flex items-center gap-1">
-                <input type="checkbox" className=" w-4 h-4 accent-primary" />{" "}
-                <span className="text-sm font-semibold">Hot Sause</span>
+                <span className="text-sm font-semibold"> Large</span>
               </label>
             </div>
           </div>

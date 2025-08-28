@@ -4,18 +4,36 @@ import Title from "../ui/Title";
 import Input from "../form/Input";
 import { useFormik } from "formik";
 import { newPasswordSchema } from "@/schemas/newPassword";
+import axios from "axios";
+import { toast } from "react-toastify";
 
-function Password() {
+function Password({ user }) {
+  console.log("Account", user._id);
+
   const onSubmit = async (values, actions) => {
-    await new Promise((resolve) => setTimeout(resolve, 4000));
-    actions.resetForm();
+    console.log("values", values); // 👈 Test için
+    console.log("user", user._id);
+
+    try {
+      const res = await axios.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users/${user._id}`,
+        {
+          password: values.password,
+          confirmPassword: values.confirmPassword,
+        }
+      );
+      toast.success("Kayıt başarılı");
+    } catch (error) {
+      console.log(error);
+      toast.error("Kayıt yapılamadı. Lütfen tekrar deneyin.");
+    }
   };
 
   const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
     useFormik({
       initialValues: {
-        password: "",
-        confirmPassword: "",
+        password: user?.password || "",
+        confirmPassword: user?.confirmPassword || "",
       },
       onSubmit,
       validationSchema: newPasswordSchema,

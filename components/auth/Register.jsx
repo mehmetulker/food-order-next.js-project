@@ -4,10 +4,27 @@ import { registerSchema } from "@/schemas/register";
 import Link from "next/link";
 import Input from "@/components/form/Input";
 import Title from "@/components/ui/Title";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const onSubmit = async (values, actions) => {
-    await new Promise((resolve) => setTimeout(resolve, 4000));
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users/register`,
+        values
+      );
+      toast.success("Kayıt başarılı");
+    } catch (error) {
+      console.log(error);
+      const errMsg = error?.response?.data?.message;
+      console.log(errMsg);
+      if (errMsg === "User already exists") {
+        toast.error("Bu e-posta zaten kayıtlı!");
+      } else {
+        toast.error("Kayıt yapılamadı. Lütfen tekrar deneyin.");
+      }
+    }
     actions.resetForm();
   };
 
@@ -68,7 +85,7 @@ const Register = () => {
     <div className="container mx-auto ">
       <div className="flex flex-col justify-center items-center h-[80vh] w-full sm:w-1/2 mx-auto">
         <div className="text-center">
-          <Title addClass="text-[40px]">Login</Title>
+          <Title addClass="text-[40px]">Register</Title>
         </div>
         <form
           className=" flex flex-col gap-4 w-full px-3 mt-5 "
@@ -82,13 +99,13 @@ const Register = () => {
               onBlur={handleBlur}
             />
           ))}
-        </form>
-        <div className="flex flex-col gap-4 w-full mt-6 px-3 ">
-          <button onClick={handleSubmit} className="btn-primary " type="submit">
+          <button className="btn-primary " type="submit">
             REGISTER
           </button>
+        </form>
+        <div className="flex flex-col gap-4 w-full mt-6 px-3 ">
           <Link
-            href="/auth/login"
+            href="/auth"
             className="text-start underline text-sm  text-secondary"
           >
             <span>Do you have a account ?</span>
