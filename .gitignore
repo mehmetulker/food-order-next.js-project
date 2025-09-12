@@ -34,3 +34,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# dotenv environment variables files
+.env
+.env.netlify
+
+
+Notes/
