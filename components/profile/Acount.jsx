@@ -9,12 +9,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 function Account({ user }) {
-  console.log("Account", user._id);
-
   const onSubmit = async (values, actions) => {
-    console.log("values", values); // 👈 Test için
-    console.log("user", user._id);
-
     try {
       const res = await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/api/users/${user._id}`,
