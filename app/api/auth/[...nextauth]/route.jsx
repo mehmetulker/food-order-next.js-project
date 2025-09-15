@@ -9,7 +9,8 @@ import bcrypt from "bcryptjs";
 
 dbConnect();
 const handler = NextAuth({
-  adapter: MongoDBAdapter(clientPromise),
+  //adapter: MongoDBAdapter(clientPromise)
+  // We removed the MongoDB Adapter because we manage user data manually.
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID,
@@ -20,39 +21,91 @@ const handler = NextAuth({
     }),
     CredentialsProvider({
       name: "Credentials",
-      credentials: {},
-      async authorize(credentials, req) {
-        const email = credentials.email;
-        const password = credentials.password;
-        const user = await User.findOne({ email: email });
-        if (!user) {
-          throw new Error("You haven't registed yet");
-        }
-        if (user) {
-          return signInUser({ user, password });
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        try {
+          const user = await User.findOne({ email: credentials.email });
+          if (user && user.password) {
+            const isValid = await bcrypt.compare(
+              credentials.password,
+              user.password
+            );
+            if (isValid) {
+              return {
+                id: user._id.toString(),
+                name: user.fullName,
+                email: user.email,
+                image: user.image,
+              };
+            }
+          }
+
+          return null;
+        } catch (error) {
+          console.error("Credentials authorize error:", error);
+          return null;
         }
       },
     }),
   ],
+
+  pages: {
+    signIn: "/auth",
+    error: "/auth",
+  },
+  callbacks: {
+    async signIn({ user, account }) {
+      try {
+        let existingUser = await User.findOne({ email: user.email });
+
+        if (!existingUser) {
+          const newUser = await User.create({
+            fullName: user.name,
+            email: user.email,
+            image: user.image,
+            provider: account.provider,
+            providerAccountId: account.providerAccountId,
+            ...(account.provider !== "credentials" && {
+              emailVerified: new Date(),
+            }),
+          });
+          user.id = newUser._id.toString();
+          console.log("Created a new user:", user.email);
+        } else {
+          user.id = existingUser._id.toString();
+          console.log("Mevcut kullanıcı giriş yaptı:", user.email);
+        }
+
+        return true;
+      } catch (error) {
+        console.error("SignIn callback hatası:", error);
+        return false;
+      }
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id;
+      }
+      return session;
+    },
+  },
+
   session: {
     // strategy: "database", // Bu kısmı eklemen gerekiyor
     strategy: "jwt", // Token üzerinden çalışır Bu sistemde oturum bilgisi (session), veritabanına değil, JWT token içine yazılır.
   },
 
-  page: {
-    signIn: "/auth", // Giriş sayfası
-    error: "/auth", // Hata sayfası
-  },
-  //database: process.env.MONGODB_URI, // jwt kullanırsan bu kısmı kaldırabilirsin
   secret: process.env.NEXTAUTH_SECRET,
 });
-
-const signInUser = async ({ user, password }) => {
-  const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) {
-    throw new Error("Incorrenct password");
-  }
-  return user;
-};
 
 export { handler as GET, handler as POST };
