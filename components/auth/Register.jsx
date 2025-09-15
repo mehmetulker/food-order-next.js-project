@@ -6,8 +6,10 @@ import Input from "@/components/form/Input";
 import Title from "@/components/ui/Title";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const Register = () => {
+  const router = useRouter();
   const onSubmit = async (values, actions) => {
     try {
       const res = await axios.post(
@@ -15,6 +17,7 @@ const Register = () => {
         values
       );
       toast.success("Kayıt başarılı");
+      router.push("/auth");
     } catch (error) {
       console.log(error);
       const errMsg = error?.response?.data?.message;
