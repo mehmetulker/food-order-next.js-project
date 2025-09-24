@@ -42,7 +42,7 @@ const Carousel = () => {
           <Slider {...settings}>
             <div>
               <Title addClass="text-6xl ">Fast Food Restaurant</Title>
-              <p className="text-white  text-sm my-4 max-w-lg">
+              <p className="text-white text-sm my-4 max-w-lg">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
                 enim, voluptate aperiam unde ex velit similique magni
                 exercitationem aliquid soluta. Veniam nemo delectus deleniti vel
@@ -52,40 +52,33 @@ const Carousel = () => {
                 Order Online
               </button>
             </div>
+
             <div>
-              <Title addClass="text-6xl">Fast Food Restaurant</Title>
-              <p className="text-white  text-sm my-4 max-w-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-                enim, voluptate aperiam unde ex velit similique magni
-                exercitationem aliquid soluta. Veniam nemo delectus deleniti vel
-                ducimus ullam magni sequi nihil!
+              <Title addClass="text-6xl">Fresh & Tasty Meals</Title>
+              <p className="text-white text-sm my-4 max-w-lg">
+                Enjoy freshly prepared meals made with high-quality ingredients.
+                Quick service, delicious taste, and affordable prices every day.
               </p>
-              <button className="btn-primary hidden sm:block">
-                Order Online
-              </button>
+              <button className="btn-primary hidden sm:block">View Menu</button>
             </div>
+
             <div>
-              <Title addClass="text-6xl">Fast Food Restaurant</Title>
-              <p className="text-white  text-sm my-4 max-w-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-                enim, voluptate aperiam unde ex velit similique magni
-                exercitationem aliquid soluta. Veniam nemo delectus deleniti vel
-                ducimus ullam magni sequi nihil!
+              <Title addClass="text-6xl">Fast Delivery</Title>
+              <p className="text-white text-sm my-4 max-w-lg">
+                Get your food delivered hot and fast straight to your door.
+                Reliable delivery service to keep you satisfied anytime.
+              </p>
+              <button className="btn-primary hidden sm:block">Order Now</button>
+            </div>
+
+            <div>
+              <Title addClass="text-6xl">Best Customer Service</Title>
+              <p className="text-white text-sm my-4 max-w-lg">
+                Our friendly staff is always ready to serve you with a smile. We
+                care about making your experience comfortable and enjoyable.
               </p>
               <button className="btn-primary hidden sm:block">
-                Order Online
-              </button>
-            </div>{" "}
-            <div>
-              <Title addClass="text-6xl">Fast Food Restaurant</Title>
-              <p className="text-white  text-sm my-4 max-w-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-                enim, voluptate aperiam unde ex velit similique magni
-                exercitationem aliquid soluta. Veniam nemo delectus deleniti vel
-                ducimus ullam magni sequi nihil!
-              </p>
-              <button className="btn-primary hidden sm:block">
-                Order Online
+                Contact Us
               </button>
             </div>
           </Slider>
