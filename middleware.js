@@ -18,9 +18,9 @@ export async function middleware(request) {
   const isLoggedIn = userTokenGithub || userTokenLogin;
 
   // 🔍 Loglama
-  // console.log("admin token:", adminToken);
-  //console.log("user token (GitHub):", userTokenGithub);
-  //console.log("user token (login):", userTokenLogin);
+  console.log("admin token:", adminToken);
+  console.log("user token (GitHub):", userTokenGithub);
+  console.log("user token (login):", userTokenLogin);
 
   // Admin token kontrolü
   if (adminToken) {
@@ -43,11 +43,6 @@ export async function middleware(request) {
 
   // User token kontrolü
   if (isLoggedIn) {
-    // User `/admin` sayfalarına gitmeye çalışıyorsa engelle
-    if (pathname.startsWith("/admin")) {
-      return NextResponse.redirect(new URL("/profile", request.url));
-    }
-
     // User `/auth` sayfasına gitmeye çalışıyorsa -> yönlendir
     if (pathname.startsWith("/auth")) {
       return NextResponse.redirect(new URL("/profile", request.url));
