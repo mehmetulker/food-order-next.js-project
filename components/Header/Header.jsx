@@ -11,10 +11,13 @@ import Search from "../ui/Search";
 const Header = () => {
   const [isSearchModal, setIsSearchModal] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  console.log(isSearchModal);
+
   return (
-    <div className="h-[5.5rem] bg-secondary  justify-center items-center">
-      <div className="container mx-auto flex justify-between items-center text-white h-full">
+    <div
+      className={`bg-secondary justify-center items-center 
+      ${isMenuOpen ? "mb-[10px]" : ""}`}
+    >
+      <div className="h-[5.5rem] container mx-auto flex justify-between items-center text-white">
         <div>
           <Logo />
         </div>
@@ -57,7 +60,7 @@ const Header = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="sm:hidden hover:text-primary transition-all"
             >
-              <FaBars />
+              {isMenuOpen ? <FaTimes /> : <FaBars />}
             </button>
           </div>
         </div>
@@ -65,28 +68,19 @@ const Header = () => {
 
       {/* Dropdown Menu - Visible on small screens */}
       {isMenuOpen && (
-        <nav className="bg-white text-black sm:hidden w-full absolute left-0 top-[5.5rem] z-50">
-          <div className="flex justify-end p-4">
-            {/* Close Button */}
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="text-black hover:text-primary transition-all"
-            >
-              <FaTimes size={20} />
-            </button>
-          </div>
+        <nav className="bg-white text-black sm:hidden w-full left-0 z-50">
           <ul className="flex flex-col gap-4 p-4 uppercase">
             <li className="px-3 py-2 hover:text-primary cursor-pointer">
-              <a href="">Home</a>
+              <Link href="/">Home</Link>
             </li>
             <li className="px-3 py-2 hover:text-primary cursor-pointer">
-              <a href="">Menu</a>
+              <Link href="/menu">Menu</Link>
             </li>
             <li className="px-3 py-2 hover:text-primary cursor-pointer">
-              <a href="">About</a>
+              <Link href="/about">About</Link>
             </li>
             <li className="px-3 py-2 hover:text-primary cursor-pointer">
-              <a href="">Book Table</a>
+              <Link href="/reservation">Book Table</Link>
             </li>
           </ul>
         </nav>
